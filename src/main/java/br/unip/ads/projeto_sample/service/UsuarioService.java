@@ -24,7 +24,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> getUsuarioById(Long id) {
+    public Optional<Usuario> getUsuarioById(String id) {
         return usuarioRepository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public Optional<Usuario> updateUsuario(Long id, Usuario usuarioDetalhes) {
+    public Optional<Usuario> updateUsuario(String id, Usuario usuarioDetalhes) {
         return usuarioRepository.findById(id)
                 .map(usuarioExistente -> {
                     usuarioExistente.setNome(usuarioDetalhes.getNome());
@@ -41,7 +41,7 @@ public class UsuarioService {
                 });
     }
 
-    public boolean deleteUser(Long id) {
+    public boolean deleteUser(String id) {
         return usuarioRepository.findById(id)
                 .map(usuario -> {
                     usuarioRepository.delete(usuario);
